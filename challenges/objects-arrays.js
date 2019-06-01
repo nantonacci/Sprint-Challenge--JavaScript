@@ -130,9 +130,11 @@ const graduates = [
 Once you have the new array created, sort the universities alphabetically and log the result. */
 const universities = [];
 
-graduates.forEach(function(obj) {
-  universities.push(obj.university);
-});
+// graduates.forEach(function(obj) {
+//   universities.push(obj.university);
+// });
+
+graduates.forEach(obj => universities.push(obj.university));
 
 universities.sort();
 
@@ -146,18 +148,21 @@ Name email@example.com
 Log the result of your new array. */
 const contactInfo = [];
 
-graduates.forEach(function(obj) {
-  contactInfo.push(`${obj.first_name} ${obj.email}`);
-});
+// graduates.forEach(function(obj) {
+//   contactInfo.push(`${obj.first_name} ${obj.email}`);
+// });
+
+graduates.forEach(obj => contactInfo.push(`${obj.first_name} ${obj.email}`));
 
 console.log(contactInfo);
 
 /* Request 3: Find out how many universities have the string "Uni" included in their name. Create a new array called uni that contains them all. Log the result. */
 const uni = [];
 
+//I couldn't figure out how to turn this into an arrow function
 graduates.filter(function(obj) {
   if (obj.university.includes('Uni')) {
-    uni.push(obj);
+    uni.push(obj.university);
   }
 });
 
@@ -237,11 +242,17 @@ The zoo wants to display both the scientific name and the animal name in front o
 */
 const animalNames = [];
 
-zooAnimals.forEach(function(obj) {
+// zooAnimals.forEach(function(obj) {
+//   animalNames.push(
+//     `Name: ${obj.animal_name}, Scientific: ${obj.scientific_name}`
+//   );
+// });
+
+zooAnimals.forEach(obj =>
   animalNames.push(
     `Name: ${obj.animal_name}, Scientific: ${obj.scientific_name}`
-  );
-});
+  )
+);
 
 console.log(animalNames);
 
@@ -253,9 +264,11 @@ The zoos need a list of all their animal's names (names only, not scientific) co
 
 const lowerCase = [];
 
-zooAnimals.map(function(obj) {
-  lowerCase.push(obj.animal_name.toLowerCase());
-});
+// zooAnimals.map(function(obj) {
+//   lowerCase.push(obj.animal_name.toLowerCase());
+// });
+
+zooAnimals.map(obj => lowerCase.push(obj.animal_name.toLowerCase()));
 
 console.log(lowerCase);
 
@@ -266,11 +279,13 @@ The zoos are concenred about animals with a lower population count. Find out whi
 */
 const lowerPopulation = [];
 
-zooAnimals.filter(function(obj) {
-  if (obj.population < 5) {
-    lowerPopulation.push(obj);
-  }
-});
+// zooAnimals.filter(function(obj) {
+//   if (obj.population < 5) {
+//     lowerPopulation.push(obj);
+//   }
+// });
+
+lowerPopulation.push(zooAnimals.filter(obj => obj.population < 5));
 
 console.log(lowerPopulation);
 
@@ -279,6 +294,9 @@ console.log(lowerPopulation);
 The zoos need to know their total animal population across the United States.  Find the total population from all the zoos using the .reduce() method.
 
 */
+
+//Couldn't figure arrow function on this one, either
+
 const populationTotal = zooAnimals.reduce(function(passedIn, obj) {
   return passedIn + obj.population;
 }, 0);
